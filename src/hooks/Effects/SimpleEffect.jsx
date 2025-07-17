@@ -50,7 +50,7 @@ function SimpleEffect(){
                     +
                 </button>
          </div>
-         <button
+         {/* <button
         onClick={() => {
           if (showForm === true) {
             setShowForm(false);
@@ -60,7 +60,9 @@ function SimpleEffect(){
         }}
       >
         {getStatus()}
-      </button>
+      </button> */}
+      <button onClick={() => setShowForm(!showForm)}>{getStatus()}</button>
+
       <MyForm showForm={showForm} />
         </div>
     )
@@ -78,7 +80,24 @@ function MyForm(props) {
     <div>
       <h3>This my Form</h3>
       <input />
+        <UnMountComponent />
     </div>
   );
 }
+
+function UnMountComponent() {
+  useEffect(() => {
+    console.log("Show Form has been Mounted");
+
+    return () => {
+      console.log("Component Unmounted");
+    };
+  }, []);
+  return (
+    <div>
+      <h1>Unmount Component</h1>
+    </div>
+  );
+}
+
 export default SimpleEffect;
