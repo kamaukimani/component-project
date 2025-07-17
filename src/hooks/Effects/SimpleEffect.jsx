@@ -86,11 +86,20 @@ function MyForm(props) {
 }
 
 function UnMountComponent() {
+    let k=1;
   useEffect(() => {
     console.log("Show Form has been Mounted");
+    //kill interval
+    let interval = setInterval(() => {
+        console.log("k is", k)
+        k= k + 1
+    }, 1000);
+
+    // //Clean UP Function<Clean up any memory<memory leakage> main thread>
 
     return () => {
       console.log("Component Unmounted");
+      clearInterval(interval)
     };
   }, []);
   return (
