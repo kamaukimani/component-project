@@ -12,7 +12,7 @@ import AllData from './displaydata/AllData'
 
 import ObjData from './displaydata/objData'
 import MainComponent from './combined'
-import App from "./App"
+//import App from "./App"
 import ArrayData from "./displaydata/arrayData"
 import ParentComponent from "./props/PrimitiveData"
 import MiniProject from "./MiniProject"
@@ -26,9 +26,12 @@ import SimpleEffect from './hooks/Effects/SimpleEffect'
 import "bootstrap/dist/css/bootstrap.min.css"
 import Navigation from './Routing/ManualRoutes/Navigation'
 // import "bootstrap/dist/css/bootstrap.min.css";
-
+import Home from './Routing/ManualRoutes/Home'
+import About from './Routing/ManualRoutes/About'
+import Contact from './Routing/ManualRoutes/Contact'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+   {/* 
     <div>hello world</div>
     <TestComponent></TestComponent>
     <TestComponent/>  
@@ -50,7 +53,11 @@ createRoot(document.getElementById('root')).render(
     <SimpleState2 />
     <FormState />
     <SimpleEffect />
+    */}
     <Navigation />
+    <Home />
+    <About />
+    <Contact />
 
   </StrictMode>,
 )
