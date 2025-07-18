@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import chickenimg from "./../../assets/Chicken.jpg"
 
 function SimpleEffect(){
     //useEffect(function, dependencies)
@@ -8,6 +9,29 @@ function SimpleEffect(){
 
     const [n, setN] = useState(0);
     const [showForm, setShowForm] = useState(false);
+
+    {/*  this displays 5 chickens 
+    const [chickens, setChickens] = useState([1,2,3,4,5])
+    
+
+    */}
+    //want to display chickens dynamically through
+    //aray manipulation 
+    const [chickens, setChickens] = useState([])
+
+    useEffect(() => {
+      console.log("useState has run")
+      //set n to something
+      //1 chicken to represent or be equal to 5
+      let k = n/5  // k represents grouped data
+      k = Math.floor(k)
+      let chickenArr = [];
+      for(let i =0; i < k; i++){
+        chickenArr.push(i +1);
+      }
+      console.log(chickenArr)
+      setChickens(chickenArr)
+    }, [n])
 
     const getStatus =() => {
         if (showForm === true) {
@@ -49,6 +73,22 @@ function SimpleEffect(){
                     >
                     +
                 </button>
+                <div>
+                    {chickens.map((chicken, index) => {
+                            return(
+                                <img 
+                                src ={chickenimg}
+                                key={index}
+                                style ={{
+                                    width: "50px",
+                                    margin: "10px",
+                                
+                                }}
+                                
+                                />
+                            )
+                    })}
+                </div>
          </div>
          {/* <button
         onClick={() => {
@@ -87,6 +127,20 @@ function MyForm(props) {
 
 function UnMountComponent() {
     let k=1;
+    const [position, setPosition] = useState({x: 0,y: 0})
+    useEffect(() => {
+      const handleMouseMove = (event) => {
+        console.log("Mouse position");
+        setPosition({
+          x: event.clientX,
+          y: event.clientY,
+        });
+      };
+      window.addEventListener("mousemove", handleMouseMove)
+      return () => {
+        window.removeEventListener("mousemove", handleMouseMove);
+      };
+    }, [])
   useEffect(() => {
     console.log("Show Form has been Mounted");
     //kill interval
@@ -99,12 +153,16 @@ function UnMountComponent() {
 
     return () => {
       console.log("Component Unmounted");
-      clearInterval(interval)
+      clearInterval(interval)   //clears a memory leakage
     };
   }, []);
   return (
     <div>
       <h1>Unmount Component</h1>
+      <div>
+        <p>X Axios {position.x}</p>
+        <p>Y Axios {position.y}</p>
+      </div>
     </div>
   );
 }
