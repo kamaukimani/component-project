@@ -29,6 +29,7 @@ import Navigation from './Routing/ManualRoutes/Navigation'
 import Home from './Routing/ManualRoutes/Home'
 import About from './Routing/ManualRoutes/About'
 import Contact from './Routing/ManualRoutes/Contact'
+import ManualRoute from './Routing/ManualRoutes'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
    {/* 
@@ -53,11 +54,13 @@ createRoot(document.getElementById('root')).render(
     <SimpleState2 />
     <FormState />
     <SimpleEffect />
-    */}
-    <Navigation />
+    
+
+    {/* <Navigation />
     <Home />
     <About />
-    <Contact />
+    <Contact /> */}
+    <ManualRoute />
 
   </StrictMode>,
 )
